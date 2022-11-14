@@ -41,6 +41,7 @@ extension ShowFrameImagesViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FrameCollectionViewCell", for: indexPath) as? FrameCollectionViewCell else { return UICollectionViewCell() }
         
         let image = arrayImages[indexPath.item]
+        cell.imgFrame.contentMode = .scaleAspectFill
         cell.imgFrame.image = image
         
         return cell
