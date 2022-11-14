@@ -42,13 +42,13 @@ class ViewController: UIViewController {
     
     @IBAction func onClickAct01(_ sender: UIButton) {
         lblClickInfo.text = "\(#function)"
+        guard let outputFileURL = tempOutputPath else { return }
+        
+        lblClickInfo.text = outputFileURL.description
+        
     }
     
     @IBAction func onClickAct02(_ sender: UIButton) {
-        lblClickInfo.text = "\(#function)"
-    }
-    
-    @IBAction func onClickAct03(_ sender: UIButton) {
         lblClickInfo.text = "\(#function)"
     }
 }
