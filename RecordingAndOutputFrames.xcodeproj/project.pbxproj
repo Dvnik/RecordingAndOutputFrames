@@ -13,6 +13,7 @@
 		12A310A62921D394008E8174 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A310A42921D394008E8174 /* Main.storyboard */; };
 		12A310A82921D396008E8174 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12A310A72921D396008E8174 /* Assets.xcassets */; };
 		12A310AB2921D396008E8174 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 12A310A92921D396008E8174 /* LaunchScreen.storyboard */; };
+		12D1BC572921D4CB00F256D9 /* MediaHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12D1BC562921D4CB00F256D9 /* MediaHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		12A310A72921D396008E8174 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		12A310AA2921D396008E8174 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		12A310AC2921D396008E8174 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		12D1BC562921D4CB00F256D9 /* MediaHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		12A3109D2921D394008E8174 /* RecordingAndOutputFrames */ = {
 			isa = PBXGroup;
 			children = (
+				12D1BC552921D4B400F256D9 /* Handler */,
 				12A3109E2921D394008E8174 /* AppDelegate.swift */,
 				12A310A02921D394008E8174 /* SceneDelegate.swift */,
 				12A310A22921D394008E8174 /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				12A310AC2921D396008E8174 /* Info.plist */,
 			);
 			path = RecordingAndOutputFrames;
+			sourceTree = "<group>";
+		};
+		12D1BC552921D4B400F256D9 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+				12D1BC562921D4CB00F256D9 /* MediaHandler.swift */,
+			);
+			path = Handler;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +152,7 @@
 				12A310A32921D394008E8174 /* ViewController.swift in Sources */,
 				12A3109F2921D394008E8174 /* AppDelegate.swift in Sources */,
 				12A310A12921D394008E8174 /* SceneDelegate.swift in Sources */,
+				12D1BC572921D4CB00F256D9 /* MediaHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
