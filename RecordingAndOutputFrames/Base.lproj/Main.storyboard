@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="ipad10_9rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -13,21 +14,21 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RecordingAndOutputFrames" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="820" height="1180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NWh-Q6-bKz">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="24" width="820" height="1136"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1lD-XP-Ole">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="316.33333333333331"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="820" height="473.5"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BsL-9x-BYi">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="316.33333333333331"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="820" height="473.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POO-eW-0nP">
-                                                <rect key="frame" x="166.66666666666666" y="247.33333333333329" width="60" height="58.666666666666714"/>
+                                                <rect key="frame" x="380" y="404" width="60" height="59"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="60" id="56e-Xo-mcd"/>
                                                     <constraint firstAttribute="width" secondItem="POO-eW-0nP" secondAttribute="height" multiplier="1:1" id="HMU-ig-3lD"/>
@@ -51,17 +52,17 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRh-rb-XoA">
-                                        <rect key="frame" x="0.0" y="316.33333333333331" width="393" height="252.99999999999994"/>
+                                        <rect key="frame" x="0.0" y="473.5" width="820" height="378.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDh-kH-6zh">
-                                        <rect key="frame" x="0.0" y="569.33333333333337" width="393" height="189.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="852" width="820" height="284"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="UQR-n2-FUf">
-                                                <rect key="frame" x="0.0" y="142.33333333333326" width="393" height="47.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="213" width="820" height="71"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eke-ni-akr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="131" height="47.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="273.5" height="71"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Action01">
                                                             <fontDescription key="titleFontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="20"/>
@@ -71,7 +72,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vCH-bW-qRV">
-                                                        <rect key="frame" x="131" y="0.0" width="131" height="47.333333333333336"/>
+                                                        <rect key="frame" x="273.5" y="0.0" width="273" height="71"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Action02">
                                                             <fontDescription key="titleFontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="20"/>
@@ -81,7 +82,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRk-UH-6ot">
-                                                        <rect key="frame" x="262" y="0.0" width="131" height="47.333333333333336"/>
+                                                        <rect key="frame" x="546.5" y="0.0" width="273.5" height="71"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" title="Action03">
                                                             <fontDescription key="titleFontDescription" name="ArialHebrew" family="Arial Hebrew" pointSize="20"/>
@@ -93,7 +94,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ko-Oa-Kgy">
-                                                <rect key="frame" x="16.000000000000004" y="117" width="32.333333333333343" height="20.333333333333343"/>
+                                                <rect key="frame" x="16" y="187.5" width="32.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>

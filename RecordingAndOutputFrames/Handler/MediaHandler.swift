@@ -48,8 +48,8 @@ class MediaHandler: NSObject {
         captureSession.addOutput(videoFileOutput)
         // 提供相機預覽
         cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        cameraPreviewLayer?.frame = showView.bounds
         cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        cameraPreviewLayer?.frame = showView.layer.frame
         // 將cameraPreviewLayer加入到要顯示的view底下
         showView.layer.addSublayer(cameraPreviewLayer!)
         
