@@ -69,17 +69,19 @@ class CameraController: NSObject {
 //            }
         }
     }
-    
-    private var isRecording: Bool = false
     //MARK: functions
-    func prepare(completionHandler: @escaping PrepareCompletion) {
+    func prepare(isVideo : Bool = false, completionHandler: @escaping PrepareCompletion) {
         DispatchQueue(label: "prepare").async {
             do {
                 self.createCaptureSession()
                 try self.configureCaptureDevice()
                 try self.configureDeviceInputs()
-                try self.configurePhotoOutput()
-                try self.configureVideoOutput()
+                if isVideo {
+                    try self.configureVideoOutput()
+                }
+                else {
+                    try self.configurePhotoOutput()
+                }
             }
             catch {
                 DispatchQueue.main.async {
@@ -93,7 +95,6 @@ class CameraController: NSObject {
             }
         }
     }// end prepare
-    
     func displayPreview(on view: UIView) throws {
         guard let captureSession = self.captureSession, captureSession.isRunning else { throw CameraControllerError.captureSessionIsMissing }
         
@@ -153,7 +154,6 @@ class CameraController: NSObject {
     }
     //MARK: control camera
     func captureImage(completion: @escaping (UIImage?, Error?) -> Void) {
-        if isRecording { return }
         guard let captureSession = captureSession, captureSession.isRunning else {
             completion(nil, CameraControllerError.captureSessionIsMissing)
             return
@@ -177,13 +177,11 @@ class CameraController: NSObject {
         session.stopRunning()
     }
     //video control
-    func startRecording(outputPath: URL, recButton: UIButton? = nil, capturePreset preset: AVCaptureSession.Preset = .high, completion: @escaping URLCompletion) {
+    func startRecording(outputPath: URL, recButton: UIButton? = nil, completion: @escaping URLCompletion) {
         guard let captureSession = captureSession, captureSession.isRunning else {
             completion(nil, CameraControllerError.captureSessionIsMissing)
             return
         }
-        self.isRecording = true// status on
-        captureSession.sessionPreset = preset// change sessionPreset
         self.videoOutput?.startRecording(to: outputPath, recordingDelegate: self)
         self.videoRecordingCompletionBlock = completion
         if let btnView = recButton {
@@ -193,12 +191,10 @@ class CameraController: NSObject {
     }
     
     func stopRecording(recButton: UIButton? = nil) {
-        self.captureSession?.sessionPreset = .photo
         self.videoOutput?.stopRecording()
         if let btnView = recButton {
             recordingAnimation(isRecording: false, playButton: btnView)
         }
-        self.isRecording = false
     }
 }
 

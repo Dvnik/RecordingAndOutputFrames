@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
     //MARK: functions
     private func configureCameraController() {
-        cameraController.prepare { (error:Error?) in
+        cameraController.prepare(isVideo: true) { (error:Error?) in
             if let error = error {
                 print(error)
             }
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             }
         }
         else {
-            cameraController.stopRunning()
+            cameraController.stopRecording(recButton: sender)
         }
     }
     
