@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120144E12924DEE100B15443 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120144E02924DEE100B15443 /* CameraController.swift */; };
 		128355AB292234F4007F47EE /* FrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128355AA292234F4007F47EE /* FrameCollectionViewCell.swift */; };
 		128355AE29223565007F47EE /* ShowFrameImagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128355AD29223565007F47EE /* ShowFrameImagesViewController.swift */; };
 		12A3109F2921D394008E8174 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3109E2921D394008E8174 /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		120144E02924DEE100B15443 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		128355AA292234F4007F47EE /* FrameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameCollectionViewCell.swift; sourceTree = "<group>"; };
 		128355AD29223565007F47EE /* ShowFrameImagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowFrameImagesViewController.swift; sourceTree = "<group>"; };
 		12A3109B2921D394008E8174 /* RecordingAndOutputFrames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecordingAndOutputFrames.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		120144DF2924DEC600B15443 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				120144E02924DEE100B15443 /* CameraController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		128355A429222C53007F47EE /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		12A3109D2921D394008E8174 /* RecordingAndOutputFrames */ = {
 			isa = PBXGroup;
 			children = (
+				120144DF2924DEC600B15443 /* Controller */,
 				128355AC29223547007F47EE /* ViewController */,
 				128355A429222C53007F47EE /* View */,
 				12D1BC552921D4B400F256D9 /* Handler */,
@@ -173,6 +184,7 @@
 			files = (
 				12A310A32921D394008E8174 /* ViewController.swift in Sources */,
 				12A3109F2921D394008E8174 /* AppDelegate.swift in Sources */,
+				120144E12924DEE100B15443 /* CameraController.swift in Sources */,
 				12A310A12921D394008E8174 /* SceneDelegate.swift in Sources */,
 				128355AB292234F4007F47EE /* FrameCollectionViewCell.swift in Sources */,
 				12D1BC572921D4CB00F256D9 /* MediaHandler.swift in Sources */,

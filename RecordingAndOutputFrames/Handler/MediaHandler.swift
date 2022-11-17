@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import AVFoundation
 import AVKit
 
 class MediaHandler: NSObject {
@@ -24,56 +23,24 @@ class MediaHandler: NSObject {
             return NSTemporaryDirectory() + "output.mov"
         }
     }
+    var tempOutputURL: URL {
+        get {
+            return URL(fileURLWithPath: tempOutputPath)
+        }
+    }
     
-    //AVFoundation
-    let captureSession = AVCaptureSession()
-    var videoFileOutput = AVCaptureMovieFileOutput()// 設置影片擷取後輸出的session
-    
-    var currentDevice: AVCaptureDevice!//必須找到相機裝置來拍攝影片
-    var cameraPreviewLayer: AVCaptureVideoPreviewLayer?//預覽層（preview layer）做為相機預覽用
-    
+    var playerController: AVPlayerViewController?
     //MARK: - functions
-    //MARK: default setting
-    func defaultConfigure(showView: UIView) -> Bool {
-        // 取得後置相機來擷取影片
-        currentDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
-        // 取得輸入資料源
-        guard let captureDeviceInput = try? AVCaptureDeviceInput(device: currentDevice) else {
-            return false
-        }
-        // 以高解析度來預設 session
-        captureSession.sessionPreset = .high
-        // 設置輸入與輸出裝置的 session
-        captureSession.addInput(captureDeviceInput)
-        captureSession.addOutput(videoFileOutput)
-        // 提供相機預覽
-        cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-        cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        cameraPreviewLayer?.frame = showView.bounds
-        // 將cameraPreviewLayer加入到要顯示的view底下
-        showView.layer.addSublayer(cameraPreviewLayer!)
-        
-        captureSession.startRunning()
-        
-        return true
-    }
-    // 執行錄影的功能
-    func defaultRecordMedia(isRecording status: Bool, recordingDelegate delegate: AVCaptureFileOutputRecordingDelegate) {
-        if status {
-            let outputURL = URL(fileURLWithPath: tempOutputPath)
-            videoFileOutput.startRecording(to: outputURL, recordingDelegate: delegate)
-        }
-        else {
-            videoFileOutput.stopRecording()
-        }
-    }
-    //MARK: viewSet
-    func boundingPlayerViewController(in view: UIView) -> AVPlayerViewController {
+    func boundingPlayerViewController(in view: UIView) {
         let avpVC = AVPlayerViewController()
         avpVC.view.frame = view.bounds
         
         view.addSubview(avpVC.view)
-        return avpVC
+        playerController = avpVC
+    }
+    
+    func setPlayVideo(url setURL: URL) {
+        playerController?.player = AVPlayer(url: setURL)
     }
     //錄影的按鈕動畫
     func recordingAnimation(isRecording status: Bool, playButton view: UIView) {
@@ -98,9 +65,7 @@ class MediaHandler: NSObject {
     
     /// 將影像轉為圖片(預設值)
     func getAllFrameImages() -> [UIImage] {
-        let tempURL = URL(fileURLWithPath: tempOutputPath)
-        
-        return getAllFrameImages(videoURL: tempURL)
+        return getAllFrameImages(videoURL: tempOutputURL)
     }
     /// 將影像轉為圖片，指定影像路徑、擷取頻率(間隔多少秒抓一張圖)
     func getAllFrameImages(videoURL: URL, rate: Float64 = 0.1) -> [UIImage] {
@@ -127,7 +92,7 @@ class MediaHandler: NSObject {
         return newFrames
     }
     /// 取得AVAssetImageGenerator(影像資源)中的一張截圖
-    func getFrameImage(fromTime:Float64, generator: AVAssetImageGenerator) -> CGImage? {
+    private func getFrameImage(fromTime:Float64, generator: AVAssetImageGenerator) -> CGImage? {
         let time:CMTime = CMTimeMakeWithSeconds(fromTime, preferredTimescale:600)
         return try? generator.copyCGImage(at:time, actualTime: nil)
     }

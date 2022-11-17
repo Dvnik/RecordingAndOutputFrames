@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import AVKit
 
 class ViewController: UIViewController {
     //MARK: outlet
@@ -18,27 +17,46 @@ class ViewController: UIViewController {
     @IBOutlet weak var lblClickInfo: UILabel!
     //MARK: values
     let handler = MediaHandler.shared
+    let cameraController = CameraController()
     
-    var avPlayerVC: AVPlayerViewController!
     var tempOutputPath: URL!
-
     var isRecording: Bool = false
     //MARK: life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         lblClickInfo.text = ""
-        _ = handler.defaultConfigure(showView: recordPreview)
-        avPlayerVC = handler.boundingPlayerViewController(in: playerView)
+        configureCameraController()
+        handler.boundingPlayerViewController(in: playerView)
+    }
+    //MARK: functions
+    private func configureCameraController() {
+        cameraController.prepare { (error:Error?) in
+            if let error = error {
+                print(error)
+            }
+            try? self.cameraController.displayPreview(on: self.recordPreview)
+        }
     }
     //MARK: @IBAction
 
     @IBAction func actionRecording(_ sender: UIButton) {
         self.isRecording = !self.isRecording
-        handler.recordingAnimation(isRecording: self.isRecording, playButton: sender)
-        handler.defaultRecordMedia(isRecording: self.isRecording, recordingDelegate: self)
+        if self.isRecording {
+            cameraController.startRecording(outputPath: handler.tempOutputURL, recButton: sender) { outputFileURL, error in
+                if error != nil {
+                    return
+                }
+                if let outputFileURL = outputFileURL {
+                    self.handler.setPlayVideo(url: outputFileURL)
+                }
+                self.tempOutputPath = outputFileURL
+            }
+        }
+        else {
+            cameraController.stopRunning()
+        }
     }
-    
     
     @IBAction func onClickAct01(_ sender: UIButton) {
         lblClickInfo.text = "\(#function)"
@@ -51,22 +69,4 @@ class ViewController: UIViewController {
     @IBAction func onClickAct02(_ sender: UIButton) {
         lblClickInfo.text = "\(#function)"
     }
-}
-
-//MARK: - AVCaptureFileOutputRecordingDelegate
-extension ViewController: AVCaptureFileOutputRecordingDelegate {
-    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
-        guard error == nil else {
-            print(error ?? "")
-            return
-        }
-        
-        tempOutputPath = outputFileURL
-        avPlayerVC.player = AVPlayer(url: outputFileURL)
-    }
-    
-    
-    
-    
-    
 }

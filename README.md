@@ -1,6 +1,15 @@
 # RecordingAndOutputFrames
 
 ---
+2022/11/17
+
+因為PreviewLayer無法拓展到指定的UIView上，
+所以參考了別人的做法，
+整理出CameraController控制相機相關的方法。
+
+MediaHandler就留下處理和CameraController無關的功能。
+
+---
 2022/11/15
 
 此Project包含了兩個部分
