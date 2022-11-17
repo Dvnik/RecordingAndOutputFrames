@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     }
     //MARK: functions
     private func configureCameraController() {
-        cameraController.prepare(isVideo: true) { (error:Error?) in
+        cameraController.prepare { (error:Error?) in
             if let error = error {
                 print(error)
             }

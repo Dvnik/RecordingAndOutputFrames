@@ -76,12 +76,8 @@ class CameraController: NSObject {
                 self.createCaptureSession()
                 try self.configureCaptureDevice()
                 try self.configureDeviceInputs()
-                if isVideo {
-                    try self.configureVideoOutput()
-                }
-                else {
-                    try self.configurePhotoOutput()
-                }
+                try self.configurePhotoOutput()
+                try self.configureVideoOutput()
             }
             catch {
                 DispatchQueue.main.async {
