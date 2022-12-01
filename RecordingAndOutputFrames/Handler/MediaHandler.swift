@@ -78,23 +78,32 @@ class MediaHandler: NSObject {
         var count:Float64 = 0.0
         // make frame images
         while count < duration {
-            if let cgImage = getFrameImage(fromTime: count, generator: generator) {
-                newFrames.append(UIImage(cgImage: cgImage))
+            if let image = getFrameImage(fromTime: count, generator: generator) {
+                newFrames.append(image)
             }
             
             count += rate
         }
-        // last Frame
-        if let cgImage = getFrameImage(fromTime: duration, generator: generator) {
-            newFrames.append(UIImage(cgImage: cgImage))
-        }
         // result
         return newFrames
     }
+    // 只取出影像中的某張圖
+    func getVideoFrameImage(videoURL: URL, fromTime: Float64 = 0.0) -> UIImage? {
+        let asset = AVAsset(url: videoURL)
+        let generator = AVAssetImageGenerator(asset: asset)
+        generator.appliesPreferredTrackTransform = true
+        
+        return getFrameImage(fromTime: fromTime, generator: generator)
+    }
+    
     /// 取得AVAssetImageGenerator(影像資源)中的一張截圖
-    private func getFrameImage(fromTime:Float64, generator: AVAssetImageGenerator) -> CGImage? {
+    private func getFrameImage(fromTime:Float64, generator: AVAssetImageGenerator) -> UIImage? {
         let time:CMTime = CMTimeMakeWithSeconds(fromTime, preferredTimescale:600)
-        return try? generator.copyCGImage(at:time, actualTime: nil)
+        
+        if let cgImage = try? generator.copyCGImage(at:time, actualTime: nil) {
+            return UIImage(cgImage: cgImage)
+        }
+        return nil
     }
     
     
